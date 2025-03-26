@@ -5,11 +5,6 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 
-@app.route("/femandaopix")
-def manda_o_pix():
-    
-    return "<h2>SE TEM DOR DE CUTUVELO, TÁ DEVENDO</h2>"
-
 
 
 def init_db():
@@ -60,6 +55,25 @@ def doar():
 
    
     return jsonify({"mensagem": "Livro cadastrado com sucesso"}), 201
+
+@app.route("/livros", methods=["GET"])
+def livros():
+    
+    with sqlite3.connect("database.db") as conn:
+        
+        livros = conn.execute("SELECT * FROM LIVROS") .fetchall()  
+          
+        livros_formatados = []
+
+
+        for item in livros:
+            dicionario= {
+                "id": item[0],
+                "titulo": item[1],
+                "categoria": item[2],
+                "autor": item[3],
+                "image_url": item[4]
+            }
 
 if __name__ == "__main__":
    
