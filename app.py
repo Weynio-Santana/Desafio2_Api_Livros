@@ -5,7 +5,10 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 
-
+@app.route("/")
+def exiba_mensagem():
+    # Retorna um texto formatado em HTML que será exibido no navegador ao acessar a rota "/"
+    return "<h1> API DE LIVROS DOADOS </h1>"
 
 def init_db():
    
@@ -74,6 +77,11 @@ def livros():
                 "autor": item[3],
                 "image_url": item[4]
             }
+            livros_formatados.append(dicionario)
+
+    return jsonify(livros_formatados), 200
+
+
 
 if __name__ == "__main__":
    
