@@ -8,7 +8,7 @@ CORS(app)
 @app.route("/")
 def exiba_mensagem():
     # Retorna um texto formatado em HTML que será exibido no navegador ao acessar a rota "/"
-    return "<h1> API DE LIVROS DOADOS </h1>"
+    return "<h1> API DE LIVROS PARA O PROJETO FINAL DA VAI NA WEB </h1>"
 
 def init_db():
    
